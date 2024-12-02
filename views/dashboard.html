@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smartkey Booth || PITI Kelompok 3</title>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <script src="/socket.io/socket.io.js"></script>
+  <body>
+    <main>
+      <div class="signup">
+        <img src="./login.png" alt="Sign Up" class="sign-up-btn" />
+      </div>
+      <div class="login">
+        <img src="./signup.png" alt="Login" class="login-btn" />
+      </div>
+
+      <div class="back-layer">
+        <form action="" class="login-form active">
+          <h2 class="login-label">Pinjam Kunci</h2>
+
+          <p>Silakan isi data di bawah untuk peminjaman.</p>
+          <!-- <input type="email" id="lemail" placeholder="Email" /> -->
+          <div class="custom-select" style="width: 200px">
+            <select class="classic">
+              <option value="0">Pilih Ruang</option>
+              <option value="1">M10</option>
+              <option value="2">M11</option>
+              <option value="3">M12</option>
+            </select>
+            <br />
+          </div>
+          <br />
+          <div class="custom-select" style="width: 200px">
+            <select class="classic">
+              <option value="0">Asal Kelas</option>
+              <option value="1">4A</option>
+              <option value="2">4B</option>
+              <option value="3">4C</option>
+            </select>
+            <br />
+          </div>
+          <!-- <input type="password" id="lpassword" placeholder="Password" /> -->
+          <button type="button" onclick="pinjam()">PINJAM KUNCi</button>
+          <div class="form-text">
+            <p>
+              Don't have an account?
+              <a href="/" class="sign-up-btn" onclick="handleSignUp(event)"
+                >Sign up here</a
+              >
+            </p>
+            <a href="/" class="jajal" onclick="backToIndex(event)">Back</a>
+          </div>
+        </form>
+
+        <form action="" class="signup-form">
+          <h2 class="login-label">Kembalikan Kunci</h2>
+          <p>Masukkan kunci ke tempat yang tersedia.</p>
+          <p id="data"></p>
+          <!-- <input type="text" id="f-name" placeholder="First Name" required />
+          <input type="text" id="l-name" placeholder="Last Name" required />
+          <input type="email" id="semail" placeholder="Email" required />
+          <input
+            type="password"
+            id="spassword"
+            placeholder="Password"
+            required
+          /> -->
+          <h3>Anda meminjam kunci kelas :</h3>
+          <h2 class="login-label">M10</h2>
+          <button type="button" id="btn-kembalikan" onclick="kembalikanKunci()">
+            Kembalikan Kunci
+          </button>
+          <div class="form-text">
+            <a href="/" class="jajal" onclick="backToIndex(event)">Back</a>
+          </div>
+          <!-- <div class="form-text">
+            <p>
+              Already have an account?
+              <a href="index.html" class="login-btn">Login here</a>
+            </p>
+          </div>-->
+        </form>
+      </div>
+    </main>
+
+    <!-- Script JS -->
+    <script src="./script.js"></script>
+    <script src="sweetalert.min.js"></script>
+  </body>
+</html>

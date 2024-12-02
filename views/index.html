@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smartkey Booth || PITI Kelompok 3</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        background: #48d0f4;
+        height: 100vh; /* Tambahkan ini */
+        display: flex; /* Tambahkan ini */
+        justify-content: center; /* Tambahkan ini */
+        align-items: center; /* Tambahkan ini */
+        margin: 0; /* Hilangkan margin default */
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .scan {
+        color: #4a4849;
+        font-size: 40px;
+        font-family: "Inter", "Arial";
+        font-weight: 700;
+        margin: 5px;
+      }
+      input {
+        width: 300px;
+        height: 40px;
+        border: transparent;
+        border-radius: 5px;
+        font-size: 20px;
+        font-family: Inter;
+        outline: none;
+        margin: 20px;
+      }
+      #cek {
+        background-color: #1f6dff;
+        border-radius: 6px;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      #cek:hover {
+        color: white;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+
+    socket.on("data", ({ data }) => {
+      let comp = document.getElementById("inputNpm");
+
+      comp.value = data;
+    });
+    function toggle(data) {
+      fetch("http://localhost:3000/arduinoApi", {
+        method: "POST",
+        body: JSON.stringify({ data }),
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+  </script>
+  <body>
+    <!-- SMART KEY
+    <p id="data"></p>
+    <div>
+      <button onclick="toggle('1')">On</button>
+      <button onclick="toggle('2')">Off</button>
+    </div> -->
+
+    <form>
+      <h1 class="scan">Scan Kartu Anda</h1>
+      <div>
+        <input type="text" id="inputNpm" />
+      </div>
+      <button
+        type="button"
+        id="cek"
+        onclick="window.location.href='dashboard.html'"
+      >
+        Cek Ruang
+      </button>
+    </form>
+    <script src="script.js"></script>
+    <script>
+      const form = document.querySelector("form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Mencegah refresh halaman
+        console.log("Form submitted tanpa refresh!");
+      });
+      const node = document.getElementById("inputNpm");
+      // console.log(node);
+      node.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          pinjamKembali("P");
+          window.location.href = "dashboard.html";
+        }
+      });
+    </script>
+  </body>
+</html>
