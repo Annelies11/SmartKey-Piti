@@ -33,6 +33,7 @@ function pinjam() {
   }).then((isOkay) => {
     if (isOkay) {
       pinjamBerhasil();
+      pinjamKembali("B");
     }
   });
 }
@@ -42,7 +43,7 @@ function pinjamBerhasil() {
     text: "Jangan lupa mengembalikan kunci tepat waktu ya!",
     icon: "success",
   }).then((isOkay) => {
-    pinjamKembali("O");
+    // pinjamKembali("O");
     window.location = "index.html";
   });
 }
@@ -66,7 +67,7 @@ function kembalikanKunciBerhasil() {
     text: "Terima kasih telah mengembalikan kunci tepat waktu!",
     icon: "success",
   }).then((isOkay) => {
-    pinjamKembali("O");
+    pinjamKembali("T");
     window.location = "index.html";
   });
 }

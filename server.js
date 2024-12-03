@@ -35,8 +35,8 @@ server.listen(3000, () => {
 
 // konektifitas serial arduino
 const port = new SerialPort({
-  // path: "COM4",
-  path: "COM12",
+  path: "COM4",
+  // path: "COM12",
   baudRate: 9600,
 });
 
